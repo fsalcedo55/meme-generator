@@ -3,11 +3,14 @@ import memesData from "../data/memesData";
 
 export default function Meme() {
   function getMemeImage() {
-    const memesArray = memesData.data.memes.map((meme) => {
-      return <h1>{meme}</h1>;
-    });
+    const memesArray = memesData.data.memes;
+    const random = [Math.floor(Math.random() * memesArray.length)];
+    // const memesArray = memesData.data.memes.map((meme) => {
+    //   console.log(random);
+    // });
+    const randomURL = memesArray[random].url;
+    console.log(randomURL);
   }
-
   return (
     <div className="flex flex-col gap-6">
       <div className="flex gap-8">
@@ -28,7 +31,7 @@ export default function Meme() {
       >
         Get a new meme image 🖼
       </button>
-      <div>{memesArray}</div>
+      {/* <div>{getMemeImage}</div> */}
     </div>
   );
 }
