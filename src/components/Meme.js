@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import memesData from "../data/memesData";
 
 export default function Meme() {
+  const [memeImage, setMemeImage] = useState("http://i.imgflip.com/1bij.jpg");
+
   function getMemeImage() {
     const memesArray = memesData.data.memes;
     const random = [Math.floor(Math.random() * memesArray.length)];
-    // const memesArray = memesData.data.memes.map((meme) => {
-    //   console.log(random);
-    // });
     const randomURL = memesArray[random].url;
-    console.log(randomURL);
+    return setMemeImage(randomURL);
   }
   return (
     <div className="flex flex-col gap-6">
@@ -31,7 +30,20 @@ export default function Meme() {
       >
         Get a new meme image 🖼
       </button>
-      {/* <div>{getMemeImage}</div> */}
+      <div>
+        <img src={memeImage} alt="memeImage" />
+      </div>
     </div>
   );
 }
+
+/**
+ * Challenge: Save the random meme URL in state
+ * - Create new state called `memeImage` with an
+ *   empty string as default
+ * - When the getMemeImage function is called, update
+ *   the `memeImage` state to be the random chosen
+ *   image URL
+ * - Below the div.form, add an <img /> and set the
+ *   src to the new `memeImage` state you created
+ */
